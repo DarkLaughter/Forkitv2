@@ -1,0 +1,2 @@
+class MealDay < ApplicationRecord
+end
