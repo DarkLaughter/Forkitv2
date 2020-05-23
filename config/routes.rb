@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'users#home'
   resources :user_meals
   resources :users
   resources :ratings

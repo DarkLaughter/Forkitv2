@@ -1,0 +1,16 @@
+<%= form_for @user_meal do |f| %>
+
+<%= f.label :start_time %><br/>
+<%= f.date_field :start_time %><br/>
+
+<%= f.label :type %><br/>
+<%= f.text_field :type %><br/>
+
+<%= f.label :user_id %><br/>
+<%= f.collection_select  :user_id, User.all, :id, :name %><br/>
+
+<%= f.label :meal_id %><br/>
+<%= f.collection_select  :meal_id, Meal.all, :id, :name %><br/>
+
+<%= f.submit %>    
+<% end %>

@@ -1,0 +1,26 @@
+<h2>ALL YOUR MEAL OPTIONS</h2>
+<%= form_tag(meals_path, method: :get) do %>
+<%= label_tag :search, "search for diet friendly meals:" %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag("Search", :name => nil) %>
+<% end %>
+
+<div class="container">
+<div class="meal-index-layout">
+    <% @meals.each do |meal| %>
+
+    <div class="meal-index">
+
+
+        <h3 class="meal-title "><%= link_to meal.name, meal_path(meal.id) %></h3>
+        
+        
+        
+       
+        <img class='meal-img' src="<%= meal.img_url %>" alt="<%= meal.name%>">
+        
+
+    </div> 
+    <% end %>
+</div>
+</div>
