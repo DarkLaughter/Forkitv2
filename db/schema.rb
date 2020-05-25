@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_141258) do
   end
 
   create_table "user_meals", force: :cascade do |t|
-    t.date "start_time"
+    t.date "date"
+    t.time "time"
     t.string "meal_type"
     t.integer "user_id"
     t.integer "meal_id"

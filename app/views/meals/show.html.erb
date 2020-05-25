@@ -26,8 +26,13 @@
 
 <h5>Add this Meal to you Calendar</h5>
 <%= form_for @user_meal do |f| %>
-    <%= f.label :start_time %>
-    <%= f.date_field :start_time %>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+
+    <%= f.label :time %>
+    <%= f.time_select :time,
+{ampm: true, ignore_date: true, start_hour: 4, end_hour: 22, discard_minute: true, prompt: true, prompt: { hour: "Select time" }
+} %>
 
     <%= f.label :meal_type, "Type of Meal" %>
     <%= f.collection_select  :meal_type, ["Breakfast", "Lunch", "Dinner", "Snack"], :itself, :itself %>

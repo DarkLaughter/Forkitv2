@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+    skip_before_action :authenticate_user, only: [:new, :create]
     before_action :find_user, only: [:edit, :update, :show, :destroy]
     def index
-        @user_meals = UserMeal.find_by(user_id: session[:user_id])
+        @user_meals = UserMeal.where(user_id: session[:user_id])
     end
 
     def new
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
 
         if @user.valid?
-            session[:user_id] = user.id
+            session[:user_id] = @user.id
             flash[:success] = ["All set, exited to prep with you", "Create a week to get Started"]
             redirect_to user_path(@user)
         else

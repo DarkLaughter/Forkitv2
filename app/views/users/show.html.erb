@@ -1,8 +1,9 @@
 <h1>Profile</h1>
 
+
 <h4>Name: <%= @user.name %></h4>
 <h4>Current Email: <%= @user.email %> </h4>
-<img src="<%= @user.img_url%>" alt="<%= @user.name%>" width="300"/>
+<img src="<%= @user.img_url%>" alt="<%= @user.name%>" />
 
 
  <%= button_to "Delete Account", user_path(@user), method: :delete %>

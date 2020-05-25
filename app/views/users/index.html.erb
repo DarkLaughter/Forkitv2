@@ -1,5 +1,17 @@
+ <h2>Welcome to your Planned Meals</h2>
 
 
-<%= month_calendar do |date| %>
-<%= date.day %>
+
+ <% if @user_meals %>
+  <% @user_meals.each do |us_me| %>
+    <h3><%= link_to us_me.meal.name, meal_path(us_me.meal) %></h3>
+    <img src="<%= us_me.meal.img_url %>"" alt="<%= us_me.meal.name %>">
+    <p><%= us_me.meal_type  %> on <%= us_me.month_name%>- <%= us_me.date.day%> At: <%= us_me.oclock %> </p>
+
+
+  <%= link_to "Delete", user_meal_path(us_me), method: :delete %>
+    <% end %>
 <% end %>
+
+
+ <%= link_to "Select a Meal and Set a Date", meals_path %>
