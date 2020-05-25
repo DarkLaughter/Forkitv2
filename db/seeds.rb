@@ -5,18 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require 'faker'
 User.destroy_all
 
 puts "creating Users"
 
 users = 
     [
-    {name: "Coral", username: "coral_fussman", password: "c12345"},
-    {name: "Ramon", username: "dark_laughter", password: "e12345"},
-    {name: "Ian", username: "ian_is_goat", password: "i12345"},
-    {name: "Greg", username: "super_duper_g", password: "beautiful"},
-    {name: "Matt", username: "vaporwave", password: "m12345"}
+    {name: "Coral", username: "coral_fussman", password: "c12345", img_url: "https://i.pinimg.com/originals/a2/b6/78/a2b678da0f232e52d7fa24a58b61b5c7.jpg"},
+    {name: "Ramon", username: "dark_laughter", password: "e12345", img_url: "https://cdn1.edgedatg.com/aws/v2/abc/TheMuppets/person/909427/02f2946ac097b11d39012ced9ba75e50/320x180-Q90_02f2946ac097b11d39012ced9ba75e50.jpg" },
+    {name: "Ian", username: "ian_is_goat", password: "i12345", img_url: "https://ca.slack-edge.com/T02MD9XTF-UKLTXS2LU-93c15b2245eb-512"},
+    {name: "Greg", username: "super_duper_g", password: "beautiful", img_url:"https://ca.slack-edge.com/T02MD9XTF-U8H2RA3C1-643c8ce562ef-512"},
+    {name: "Matt", username: "vaporwave", password: "m12345" , img_url: "https://ca.slack-edge.com/T02MD9XTF-UFLH3KMEV-361ad28cf909-512"}
     ]
     users.each do |user|
         User.create(user)
@@ -192,3 +192,18 @@ meals = [
     meals.each do |meal|
         Meal.create(meal)
     end 
+
+    Comment.destroy_all
+    puts "creating comments"
+    50.times do
+      Comment.create(content: Faker::Hipster.paragraph, meal_id: Meal.all.sample.id, user_id: User.all.sample.id)
+    end
+
+
+    Rating.destroy_all
+    puts "creating ratings"
+    50.times do
+      Rating.create(rating: rand(1..5), meal_id: Meal.all.sample.id, user_id: User.all.sample.id  )
+    end
+
+

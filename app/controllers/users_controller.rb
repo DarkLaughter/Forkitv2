@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
 
         if @user.valid?
+            session[:user_id] = user.id
             flash[:success] = ["All set, exited to prep with you", "Create a week to get Started"]
             redirect_to user_path(@user)
         else
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     end
     
     def show
-    end
+    end 
     
     def destroy
         @user.destroy
