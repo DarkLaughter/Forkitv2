@@ -1,9 +1,9 @@
 <% if flash[:error] %>
   <p><%= flash[:error] %></p>
 <% end %>
-
-<%= link_to 'Log In', login_path %>
-
+<div class="login">
+<%= button_to 'Log In', login_path, { :method => :get, :class => 'button-lg' } %>
+</div>
 
   </div>
   <%= button_to("Let's Start Planning", new_user_path, { :method => :get, :class => 'special_button' })%>
