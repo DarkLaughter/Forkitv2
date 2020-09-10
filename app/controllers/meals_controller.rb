@@ -10,3 +10,6 @@ class MealsController < ApplicationController
     end
 
 end
+
+
+

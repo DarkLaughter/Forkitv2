@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     
     def create
         @user = User.create(user_params)
-
         if @user.valid?
             session[:user_id] = @user.id
             flash[:success] = ["All set, exited to prep with you", "Create a week to get Started"]
